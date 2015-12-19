@@ -100,8 +100,8 @@ Finally, store the certificate files created by the script `privkey.pem cert.pem
 
 LetsencryptHttpChallenge was inspired by:
 
-lgromanowski/letsencrypt-plugin https://github.com/lgromanowski/letsencrypt-plugin
-unixcharles/acme-client https://github.com/unixcharles/acme-client
+- lgromanowski/letsencrypt-plugin https://github.com/lgromanowski/letsencrypt-plugin
+- unixcharles/acme-client https://github.com/unixcharles/acme-client
 
 
 ## License
