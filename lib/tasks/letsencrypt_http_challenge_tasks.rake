@@ -63,7 +63,7 @@ task :generate_letsencrypt_cert do
 
     puts ''
     puts 'Requesting the certificate...'
-    csr = Acme::CertificateRequest.new(names: options[:domains])
+    csr = Acme::Client::CertificateRequest.new(names: options[:domains])
     certificate = client.new_certificate(csr)
 
     if certificate.nil?
