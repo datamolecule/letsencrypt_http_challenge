@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.1"
 
-  s.add_dependency "acme-client", "~> 0.2.2"
+  s.add_dependency "acme-client", "~> 0.3.0"
 end
