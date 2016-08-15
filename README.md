@@ -40,6 +40,11 @@ This will interact with the staging server. To obtain certificates from the prod
 
 When prompted by the script, update the LE_HTTP_CHALLENGE_RESPONSE variable on the web server and restart it. This could be further automated depending on the features of the web server hosting environment. The initial release require manual updates for each domain that needs to be verified.
 
+Run the test suite with:
+```bash
+bundle exec rake
+```
+
 A sample interaction could be as follow:
 ```bash
 LE_HTTP_CHALLENGE_CONTACT_EMAIL=admin@example.com LE_HTTP_CHALLENGE_CERTIFICATE_DOMAINS="www.example.com example.com" bundle exec rake generate_letsencrypt_cert

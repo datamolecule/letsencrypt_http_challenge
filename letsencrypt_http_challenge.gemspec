@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,bin,config,lib}/**/*", "Gemfile", "LICENSE", "README.md", "Rakefile", "letsencrypt_http_challenge.gemspec"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.1"
-
   s.add_dependency "acme-client", "~> 0.3.0"
+
+  s.add_development_dependency "byebug"
+  s.add_development_dependency "rails", "~> 5.0"
 end
