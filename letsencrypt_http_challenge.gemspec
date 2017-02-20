@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "acme-client", "~> 0.3.0"
+  s.add_dependency "figaro"
 
   s.add_development_dependency "byebug"
   s.add_development_dependency "rails", "~> 5.0"

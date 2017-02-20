@@ -42,10 +42,28 @@ task :generate_letsencrypt_cert do
       authorization = client.authorize(domain: domain)
       challenge = authorization.http01
 
+      # Setting LE_HTTP_CHALLENGE_RESPONSE in config/application.yml
+      figaro_application_path = "config/application.yml"
       puts ''
-      puts 'Set'
+      puts 'Setting'
       puts "LE_HTTP_CHALLENGE_RESPONSE=#{challenge.file_content}"
-      puts 'on your Rails web server and restart it.'
+      puts "in #{figaro_application_path}"
+      env_line = "LE_HTTP_CHALLENGE_RESPONSE=#{challenge.file_content}"
+      puts `sed -ri "s/(# )?LE_HTTP_CHALLENGE_RESPONSE.+/#{env_line}/g" "#{figaro_application_path}"`
+
+      puts ''
+      puts 'Exporting environnment variables to CleverCLoud'
+      puts `spring stop`
+      puts `rails runner -e production 'puts ENV.keys.grep(/\A_FIGARO/).map { |key| "#{key.gsub("_FIGARO_", "")}=#{ENV[key]}" }.join("\n")' | clever env import`
+
+      puts ''
+      puts 'Restarting server'
+      puts `clever restart`
+      puts 'Server has restart.'
+
+      # puts 'Set'
+      # puts "LE_HTTP_CHALLENGE_RESPONSE=#{challenge.file_content}"
+      # puts 'on your Rails web server and restart it.'
       puts ''
       puts 'You can test by pointing your browser to'
       puts "#{domain}/#{challenge.filename}"
